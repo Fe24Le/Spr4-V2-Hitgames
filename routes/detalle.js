@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const fs = require('fs');
-const jsonData = require('../datos.json');
+const jsonData = require('../data/products.json');
 
 /* GET detalle page. */
 

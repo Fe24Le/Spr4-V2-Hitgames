@@ -25,7 +25,7 @@ router.post('/crear', (req, res) => {
     };
 
     // Leer el archivo JSON y agregar el nuevo elemento
-    fs.readFile('datos.json', 'utf8', (err, data) => {
+    fs.readFile('./data/products.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error al leer el archivo JSON:', err);
             return;
@@ -35,7 +35,7 @@ router.post('/crear', (req, res) => {
         jsonData.push(nuevoElemento);
 
         // Escribir de vuelta en el archivo JSON
-        fs.writeFile('datos.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
+        fs.writeFile('./data/products.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
             if (err) {
                 console.error('Error al escribir en el archivo JSON:', err);
                 return;
@@ -55,7 +55,7 @@ router.post('/actualizar', (req, res) => {
     const nuevaDescripcion = req.body.nuevaDescripcion;
 
     // Leer el archivo JSON y buscar el elemento por su ID
-    fs.readFile('datos.json', 'utf8', (err, data) => {
+    fs.readFile('./data/products.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error al leer el archivo JSON:', err);
             return;
@@ -70,7 +70,7 @@ router.post('/actualizar', (req, res) => {
             if (nuevaDescripcion) elemento.description = nuevaDescripcion;
 
             // Escribir de vuelta en el archivo JSON
-            fs.writeFile('datos.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
+            fs.writeFile('./data/products.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
                 if (err) {
                     console.error('Error al escribir en el archivo JSON:', err);
                     return;
@@ -90,7 +90,7 @@ router.post('/eliminar', (req, res) => {
     const id = req.body.id;
 
     // Leer el archivo JSON y eliminar el elemento por su ID
-    fs.readFile('datos.json', 'utf8', (err, data) => {
+    fs.readFile('./data/products.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error al leer el archivo JSON:', err);
             return;
@@ -103,7 +103,7 @@ router.post('/eliminar', (req, res) => {
             const eliminado = jsonData.splice(elementoIndex, 1)[0];
 
             // Escribir de vuelta en el archivo JSON
-            fs.writeFile('datos.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
+            fs.writeFile('./data/products.json', JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
                 if (err) {
                     console.error('Error al escribir en el archivo JSON:', err);
                     return;
